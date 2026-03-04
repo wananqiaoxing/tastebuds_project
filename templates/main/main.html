@@ -9,24 +9,24 @@
     <p>This is a guideline for dev!</p>
     <ul>
         {% if user.is_authenticated %}
-            <li><strong>您好，{{ user.username }}！</strong></li>
-            <li><a href="{% url 'accounts:profile' user.username %}">我的个人主页</a></li>
-            <li><a href="{% url 'auth_logout' %}">登出账号</a></li>
+            <li><strong>hello, {{ user.username }}！</strong></li>
+            <li><a href="{% url 'accounts:profile' user.username %}">my page</a></li>
+            <li><a href="{% url 'auth_logout' %}">logout</a></li>
         {% else %}
-            <li><a href="{% url 'auth_login' %}">登录账号</a></li>
-            <li><a href="{% url 'registration_register' %}">注册新账号</a></li>
+            <li><a href="{% url 'auth_login' %}">login</a></li>
+            <li><a href="{% url 'registration_register' %}">create new accounts</a></li>
         {% endif %}
 
         <hr>
 
-        <li><a href="{% url 'recipes:recipes' %}">查看食谱 (Recipes)</a></li>
-        <li><a href="{% url 'restaurants:restaurants' %}">查看餐厅 (Restaurants)</a></li>
-        <li><a href="{% url 'reviews:reviews' %}">查看评论 (Reviews)</a></li>
-        <li><a href="{% url 'supply:supply' %}">查看食材供应商 (Supply)</a></li>
+        <li><a href="{% url 'recipes:recipes' %}">check recipes (Recipes)</a></li>
+        <li><a href="{% url 'restaurants:restaurants' %}">check restaurants (Restaurants)</a></li>
+        <li><a href="{% url 'reviews:reviews' %}">read views (Reviews)</a></li>
+        <li><a href="{% url 'supply:supply' %}">check suppliers (Supply)</a></li>
 
         <hr>
 
-        <li><a href="/admin/">进入 Admin 管理后台</a></li>
+        <li><a href="/admin/">Admin </a></li>
     </ul>
 
 </body>
