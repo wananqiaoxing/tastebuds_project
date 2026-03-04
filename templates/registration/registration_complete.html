@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>注册成功 - Tastebuds</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding-top: 50px; }
+        .success-card {
+            border: 1px solid #ddd;
+            display: inline-block;
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="success-card">
+        <h1>🎉 注册成功！</h1>
+        <p>欢迎加入 Tastebuds 食谱点评社区。</p>
+        <p>您的账号已经创建完毕，现在您可以开始探索美食之旅了。</p>
+
+        <a href="{% url 'main' %}" class="btn">返回首页</a>
+        <br>
+        <small><a href="{% url 'auth_login' %}">或者直接去登录</a></small>
+    </div>
+
+</body>
+</html>

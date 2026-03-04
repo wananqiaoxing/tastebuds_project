@@ -7,10 +7,15 @@
 <body>
     <h1>Welcome to Tastebuds !</h1>
     <p>This is a guideline for dev!</p>
-
     <ul>
-        <li><a href="{% url 'accounts:register' %}">注册新账号</a></li>
-        <li><a href="{% url 'accounts:login' %}">登录账号</a></li>
+        {% if user.is_authenticated %}
+            <li><strong>您好，{{ user.username }}！</strong></li>
+            <li><a href="{% url 'accounts:profile' user.username %}">我的个人主页</a></li>
+            <li><a href="{% url 'auth_logout' %}">登出账号</a></li>
+        {% else %}
+            <li><a href="{% url 'auth_login' %}">登录账号</a></li>
+            <li><a href="{% url 'registration_register' %}">注册新账号</a></li>
+        {% endif %}
 
         <hr>
 
