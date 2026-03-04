@@ -10,13 +10,13 @@
 
     <ul>
         <li><a href="{% url 'accounts:register' %}">注册新账号</a></li>
-        <li><a href="#">登录账号 (待开发)</a></li>
+        <li><a href="{% url 'accounts:login' %}">登录账号</a></li>
 
         <hr>
 
-        <li><a href="{% url 'recipes:recipes' %}">查看所有食谱 (Recipes)</a></li>
-        <li><a href="{% url 'restaurants:restaurants' %}">查看所有餐厅 (Restaurants)</a></li>
-        <li><a href="{% url 'reviews:reviews' %}">查看最新评论 (Reviews)</a></li>
+        <li><a href="{% url 'recipes:recipes' %}">查看食谱 (Recipes)</a></li>
+        <li><a href="{% url 'restaurants:restaurants' %}">查看餐厅 (Restaurants)</a></li>
+        <li><a href="{% url 'reviews:reviews' %}">查看评论 (Reviews)</a></li>
         <li><a href="{% url 'supply:supply' %}">查看食材供应商 (Supply)</a></li>
 
         <hr>
