@@ -2,10 +2,10 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>登录 - Tastebuds</title>
+    <title>login - Tastebuds</title>
 </head>
 <body>
-    <h1>登录您的账号</h1>
+    <h1>login in your accounts</h1>
 
     {% if error_msg %}
         <p style="color: red;"><strong>{{ error_msg }}</strong></p>
@@ -13,17 +13,17 @@
 
     <form method="post" action="{% url 'accounts:login' %}">
         {% csrf_token %} <p>
-            <label for="username">用户名:</label>
+            <label for="username">username:</label>
             <input type="text" name="username" id="username" required />
         </p>
         <p>
-            <label for="password">密码:</label>
+            <label for="password">password:</label>
             <input type="password" name="password" id="password" required />
         </p>
 
-        <input type="submit" value="登录" />
+        <input type="submit" value="login" />
     </form>
 
-    <p>还没有账号？ <a href="{% url 'accounts:register' %}">去注册一个吧</a></p>
+    <p> <a href="{% url 'accounts:register' %}">register</a></p>
 </body>
 </html>
