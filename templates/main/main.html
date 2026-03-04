@@ -1,10 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>Main</title>
+    <title>Tastebuds - homepage</title>
 </head>
 <body>
-<h1>Set the main page</h1>
+    <h1>Welcome to Tastebuds !</h1>
+    <p>This is a guideline for dev!</p>
+
+    <ul>
+        <li><a href="{% url 'accounts:register' %}">注册新账号</a></li>
+        <li><a href="#">登录账号 (待开发)</a></li>
+
+        <hr>
+
+        <li><a href="{% url 'recipes:recipes' %}">查看所有食谱 (Recipes)</a></li>
+        <li><a href="{% url 'restaurants:restaurants' %}">查看所有餐厅 (Restaurants)</a></li>
+        <li><a href="{% url 'reviews:reviews' %}">查看最新评论 (Reviews)</a></li>
+        <li><a href="{% url 'supply:supply' %}">查看食材供应商 (Supply)</a></li>
+
+        <hr>
+
+        <li><a href="/admin/">进入 Admin 管理后台</a></li>
+    </ul>
+
 </body>
 </html>

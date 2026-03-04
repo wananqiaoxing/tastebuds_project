@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>register - Tastebuds</title>
+</head>
+<body>
+    <h1> create new account</h1>
+
+    {% if registered %}
+        <p>regiter successful <a href="/">return homepage</a></p>
+    {% else %}
+        <form method="post" action="{% url 'accounts:register' %}" enctype="multipart/form-data">
+            {% csrf_token %} {{ user_form.as_p }}
+            {{ profile_form.as_p }}
+
+            <input type="submit" value="register" />
+        </form>
+    {% endif %}
+</body>
+</html>
