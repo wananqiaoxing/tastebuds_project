@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Daily Recommendations{% endblock %}
+
+{% block content %}
+<div class="row text-center mb-5">
+    <div class="col-12">
+        <h1>Welcome to TasteBuds</h1>
+        <p class="lead">Discover recipes, find restaurants, and source ingredients.</p>
+
+        <form class="d-flex justify-content-center mt-3" id="global-search-form">
+            {% csrf_token %}
+            <input class="form-control w-50 me-2" type="search" id="search-input" placeholder="Search for recipes or restaurants..." aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+        <div id="search-results-container" class="mt-2 text-start w-50 mx-auto"></div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <h2>Recommended Recipes</h2>
+        <ul class="list-group">
+            {% for recipe in recipes %}
+            <li class="list-group-item">{{ recipe.title }} - ${{ recipe.price }}</li>
+            {% empty %}
+            <li class="list-group-item text-muted">No recommendations available yet. Waiting for backend data!</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="col-md-6">
+        <h2>Featured Restaurants</h2>
+        <ul class="list-group">
+            {% for restaurant in restaurants %}
+            <li class="list-group-item">{{ restaurant.name }} ({{ restaurant.location }})</li>
+            {% empty %}
+            <li class="list-group-item text-muted">No restaurants listed yet. Waiting for backend data!</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

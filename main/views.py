@@ -1,4 +1,9 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+
 def main(request):
-    return HttpResponse("Hello, world. You're at the home page.")
+    # Currently passing empty context dictionaries {} until the backend team builds the models
+    context = {
+        'recipes': [],       # Placeholder for recipe data
+        'restaurants': []    # Placeholder for restaurant data
+    }
+    return render(request, 'main/index.html', context)
