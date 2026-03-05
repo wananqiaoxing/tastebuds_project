@@ -1,33 +1,49 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Tastebuds - homepage</title>
-</head>
-<body>
-    <h1>Welcome to Tastebuds !</h1>
-    <p>This is a guideline for dev!</p>
-    <ul>
-        {% if user.is_authenticated %}
-            <li><strong>hello, {{ user.username }}！</strong></li>
-            <li><a href="{% url 'accounts:profile' user.username %}">my page</a></li>
-            <li><a href="{% url 'auth_logout' %}">logout</a></li>
-        {% else %}
-            <li><a href="{% url 'auth_login' %}">login</a></li>
-            <li><a href="{% url 'registration_register' %}">create new accounts</a></li>
-        {% endif %}
+{% extends 'base.html' %}
+{% load static %}
 
-        <hr>
+{% block content %}
 
-        <li><a href="{% url 'recipes:recipes' %}">check recipes (Recipes)</a></li>
-        <li><a href="{% url 'restaurants:restaurants' %}">check restaurants (Restaurants)</a></li>
-        <li><a href="{% url 'reviews:reviews' %}">read views (Reviews)</a></li>
-        <li><a href="{% url 'supply:supply' %}">check suppliers (Supply)</a></li>
+<div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="https://dummyimage.com/1200x400/adb5bd/495057.jpg&text=Carousel+Image+1" class="d-block w-100 hero-img" alt="Hero 1">
+            <div class="carousel-caption">
+                <h1 class="text-white fw-bold">Daily Recommendation</h1>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="https://dummyimage.com/1200x400/adb5bd/495057.jpg&text=Carousel+Image+2" class="d-block w-100 hero-img" alt="Hero 2">
+            <div class="carousel-caption">
+                <h1 class="text-white fw-bold">Fresh Ingredients</h1>
+            </div>
+        </div>
+    </div>
+    
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </button>
+</div>
 
-        <hr>
+<div class="container weekly-section mt-5 mb-5">
+    <h2 class="section-title mb-4">This Week's Recommended Restaurant</h2>
+    
+    <div class="row">
+        {% for r in restaurants %}
+        <div class="col-md-4">
+            <div class="custom-card">
+                <div class="rank-badge">{{ r.rank }}</div>
+                <img src="{{ r.image }}" alt="{{ r.name }}" class="card-image w-100">
+                <div class="card-content mt-3">
+                    <h4>{{ r.name }}</h4>
+                    <p>{{ r.description }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 
-        <li><a href="/admin/">Admin </a></li>
-    </ul>
-
-</body>
-</html>
+{% endblock %}
