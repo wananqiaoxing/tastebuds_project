@@ -1,10 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>Main</title>
+    <title>Tastebuds - homepage</title>
 </head>
 <body>
-<h1>Set the main page</h1>
+    <h1>Welcome to Tastebuds !</h1>
+    <p>This is a guideline for dev!</p>
+    <ul>
+        {% if user.is_authenticated %}
+            <li><strong>hello, {{ user.username }}！</strong></li>
+            <li><a href="{% url 'accounts:profile' user.username %}">my page</a></li>
+            <li><a href="{% url 'auth_logout' %}">logout</a></li>
+        {% else %}
+            <li><a href="{% url 'auth_login' %}">login</a></li>
+            <li><a href="{% url 'registration_register' %}">create new accounts</a></li>
+        {% endif %}
+
+        <hr>
+
+        <li><a href="{% url 'recipes:recipes' %}">check recipes (Recipes)</a></li>
+        <li><a href="{% url 'restaurants:restaurants' %}">check restaurants (Restaurants)</a></li>
+        <li><a href="{% url 'reviews:reviews' %}">read views (Reviews)</a></li>
+        <li><a href="{% url 'supply:supply' %}">check suppliers (Supply)</a></li>
+
+        <hr>
+
+        <li><a href="/admin/">Admin </a></li>
+    </ul>
+
 </body>
 </html>

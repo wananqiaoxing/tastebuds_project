@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{ profile_user.username }} homepage</title>
+    <style>
+        .profile-img {
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1> {{ profile_user.username }} profiles</h1>
+
+    <p><strong>email：</strong> {{ profile_user.email }}</p>
+
+    {% if profile_user.userprofile %}
+        <div class="profile-header">
+            {% if profile_user.userprofile.picture %}
+                <img src="{{ profile_user.userprofile.picture.url }}"
+                     class="profile-img" width="150" height="150" alt="avatar">
+            {% else %}
+                <img src="/static/images/default_avatar.jpg"
+                     class="profile-img" width="150" height="150" alt="default_avatar">
+            {% endif %}
+        </div>
+
+        <p><strong>gender：</strong> {{ profile_user.userprofile.gender }}</p>
+        <p><strong>age：</strong> {{ profile_user.userprofile.age }}</p>
+        <p><strong>self page：</strong> <a href="{{ profile_user.userprofile.website }}">{{ profile_user.userprofile.website }}</a></p>
+    {% else %}
+        <p>Incomplete user profile </p>
+    {% endif %}
+
+    <hr>
+    {% if user == profile_user %}
+        <p><a href="#">change my profile</a></p>
+    {% endif %}
+
+    <a href="{% url 'main' %}">return homepage</a>
+</body>
+</html>
