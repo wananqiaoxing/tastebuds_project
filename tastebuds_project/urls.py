@@ -29,4 +29,6 @@ urlpatterns = [
     path('reviews/',include('reviews.urls')),
     path('supply/',include('supply.urls')),
     path('admin/', admin.site.urls),
+    path('accounts/', include('registration.backends.simple.urls')),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
