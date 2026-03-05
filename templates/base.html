@@ -22,10 +22,17 @@
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Recipe</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Restaurant</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Supplier</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'recipes:recipes' %}">Recipe</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'restaurants:restaurants' %}">Restaurant</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'supply:supply' %}">Supplier</a></li>
+                    
+                    {% if user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'accounts:profile' user.username %}">Profile ({{ user.username }})</a></li>
+                        <li class="nav-item"><a class="nav-link text-danger" href="{% url 'auth_logout' %}">Logout</a></li>
+                    {% else %}
+                        <li class="nav-item"><a class="nav-link text-primary" href="{% url 'auth_login' %}">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'registration_register' %}">Register</a></li>
+                    {% endif %}
                 </ul>
                 
                 <form class="d-flex">
