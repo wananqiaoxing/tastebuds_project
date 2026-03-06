@@ -9,6 +9,8 @@ class Recipe(models.Model):
     ingredient = models.TextField()
     content = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
+    # 建议添加（profile.html 用到了）
+    image = models.ImageField(upload_to='recipe_images', blank=True, null=True)
 
     def __str__(self):
         return self.title

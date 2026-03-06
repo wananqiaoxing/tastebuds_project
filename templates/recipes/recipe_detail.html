@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{ recipe.title }}</title>
+</head>
+<body>
+
+<h1>{{ recipe.title }}</h1>
+
+{% if recipe.image %}
+<img src="{{ recipe.image.url }}" width="300">
+{% endif %}
+
+<h3>Ingredients</h3>
+<p>{{ recipe.ingredient }}</p>
+
+<h3>Instructions</h3>
+<p>{{ recipe.content }}</p>
+
+<h3>Price</h3>
+<p>${{ recipe.price }}</p>
+
+<hr>
+
+<!-- Bookmark button -->
+{% if user.is_authenticated %}
+{% if is_bookmarked %}
+<a href="{% url 'accounts:remove_bookmark' recipe.id %}">
+    ❤ Bookmarked (Remove)
+</a>
+{% else %}
+<a href="{% url 'accounts:add_bookmark' recipe.id %}">
+    ♡ Add to Bookmark
+</a>
+{% endif %}
+{% else %}
+<a href="{% url 'auth_login' %}">Login to bookmark</a>
+{% endif %}
+
+<hr>
+
+<a href="{% url 'accounts:profile' user.username %}">Back to My Profile</a>
+
+</body>
+</html>
